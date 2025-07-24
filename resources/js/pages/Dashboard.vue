@@ -26,6 +26,9 @@ console.log('Dashboard props:', props);
                     <div class="text-2xl font-bold text-foreground mt-1">
                         ${{ props.balance ?? '0.00' }}
                     </div>
+                    <a href="/checkout" class="mt-2 inline-block text-sm text-blue-600 hover:underline">
+                        Top Up Balance
+                    </a>
                 </div>
             </div>
             <!-- Existing dashboard content -->
