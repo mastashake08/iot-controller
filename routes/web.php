@@ -16,7 +16,7 @@ Route::get('dashboard', function (Request $request) {
     $balance = $user->balance(); // Or $user->balance if you store it, or use Stripe API
 
     return Inertia::render('Dashboard', [
-       // 'balance' => $balance,
+       'balance' => str_replace('-', '', $balance), // Assuming balance is a string with a negative sign
         // ...other props
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -31,6 +31,7 @@ Route::get('/checkout', function (Request $request) {
     $service_fee = env('STRIPE_SERVICE_FEE', 150);
     $user = $request->user();
     $quantity = 1;
+    $paymentMethod = $user->defaultPaymentMethod();
     $user->invoicePrice($service_fee, 1);
     return $user->checkout([$stripePriceId => $quantity], [
         'success_url' => route('checkout-success').'?session_id={CHECKOUT_SESSION_ID}',

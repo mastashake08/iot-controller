@@ -24,7 +24,7 @@ console.log('Dashboard props:', props);
                 <div class="rounded-xl border border-sidebar-border/70 bg-white p-6 shadow dark:bg-neutral-900 dark:border-sidebar-border">
                     <div class="text-sm text-muted-foreground">Your Balance</div>
                     <div class="text-2xl font-bold text-foreground mt-1">
-                        ${{ props.balance ?? '0.00' }}
+                        {{ props.balance ?? '0.00' }}
                     </div>
                     <a href="/checkout" class="mt-2 inline-block text-sm text-blue-600 hover:underline">
                         Top Up Balance
